@@ -3,15 +3,15 @@
     let contraints, imgCapture, mediaStream, video;
 
     // Puzzle Vars
-    const markers = document.querySelectorAll('a-marker'), numCol = 3, numRow = 3, puzzlePieces = numCol * numRow, tolerance = 1.9;
+    const markers = document.querySelectorAll(`a-marker`), numCol = 3, numRow = 3, puzzlePieces = numCol * numRow, tolerance = 1.9;
 
     let imgPieces = new Array(puzzlePieces), puzzle = [...Array(puzzlePieces).keys()].map(String), pieces = numCol * numRow - 1, positionMarkers = [], check = new Array(6);
 
     const init = () => {
-        video = document.querySelector('video');
+        video = document.querySelector(`video`);
         navigator.mediaDevices.enumerateDevices().catch(error => console.log('enumerateDevices() error', error)).then(getStream);
 
-        takePhotoButton.addEventListener('click', getPicture);
+        takePhotoButton.addEventListener(`click`, getPicture);
     }
 
     // Get a video stream from the camera
@@ -33,9 +33,9 @@
     // Displayes the stream from the camera and then 
     // creates an ImageCapture object, using video from the stream
     const gotStream = stream => {
-        mediaStream = stream;
-        video.srcObject = stream;
-        imageCapture = new ImageCapture(stream.getVideoTracks()[0])
+		mediaStream = stream;
+		video.srcObject = stream;
+		imageCapture = new ImageCapture(stream.getVideoTracks()[0]);
     };
 
     // take the picture
@@ -49,7 +49,7 @@
     };
 
     const createImagePieces = image => {
-        const canvas = document.createElement('canvas');
+        const canvas = document.createElement(`canvas`);
         const ctx = canvas.getContext('2d');
         const pieceWidth = image.width / numCol;
         const pieceHeight = image.height / numRow;
@@ -66,11 +66,11 @@
             }
         }
         markers.forEach((marker, i) => {
-            const aImg = document.createElement('a-image');
+            const aImg = document.createElement(`a-image`);
 
-            aImg.setAttribute('rotation', '-90 0 0');
-            aImg.setAttribute('position', '0 0 0');
-            aImg.setAttribute('src', imgPieces[puzzle[i]]);
+            aImg.setAttribute(`rotation`, `-90 0 0`);
+            aImg.setAttribute(`position`, `0 0 0`);
+            aImg.setAttribute(`src`, imgPieces[puzzle[i]]);
 
             marker.appendChild(aImg);
         })
@@ -115,7 +115,7 @@
             }
             if (check.every(puzzleCheck)) {
                 console.log('Solved');
-                const solved = document.querySelector('.solved');
+                const solved = document.querySelector(`.solved`);
                 solved.style.display = 'flex';
             }
         }
