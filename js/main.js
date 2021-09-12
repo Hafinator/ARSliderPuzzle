@@ -84,6 +84,6 @@
             // randomArray[j] = t;
             [randomArray[i], randomArray[j]] = [randomArray[j], randomArray[i]];
         }
+        return randomArray;
     }
-    return randomArray;
 }
