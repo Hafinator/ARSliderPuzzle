@@ -1,5 +1,5 @@
 {
-    const image = new Image(), takePhotoButton = document.querySelector('takePhoto');
+    const image = new Image(), takePhotoButton = document.querySelector('.takePhoto');
     let contraints, imgCapture, mediaStream, video;
 
     // Puzzle Vars
@@ -121,4 +121,7 @@
         }
     }
     const puzzleCheck = check => check === true;
+
+
+    window.addEventListener(`load`, () => setTimeout(() => init(), 1000));
 }
